@@ -86,9 +86,7 @@ git分支
 	/e/gitSpace
 	
 	3、通过git init命令把这个目录变成Git可以管理的仓库 
-	
-	
-	
+		
 	4、git add readme.txt   ---->  git commit -m "文件说明文档"
 	   git status : 仓库当前的状态;
 	   git diff readme.txt :查看difference 
