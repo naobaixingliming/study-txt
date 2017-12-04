@@ -1,0 +1,6 @@
+过滤器  | currency :''
+
+监听 $watch('',function(){},true);
+
+模块化开发 module
+

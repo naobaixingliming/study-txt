@@ -1,0 +1,10 @@
+http127.0.0.17788rockmongoindex.phpaction=login.index
+
+mongoDB：
+	数据库：
+		Sql数据库 ：实时一致性，事务，多表联合查询
+		NoSql数据库：简单便捷，方便扩展，更好的性能
+		
+	线上免费	https://mlab.com/
+		
+		

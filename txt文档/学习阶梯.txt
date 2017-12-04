@@ -1,0 +1,12 @@
+
+node + mongoose + express +jq 搭建项目 (完)
+
+jq源码
+angular.1xx
+chrome工具进阶
+webpack + vue （es6 vue初级）
+
+qq音乐项目（mySql php jq）
+
+
+原生js--->canvas--->算法结构

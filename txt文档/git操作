@@ -1,0 +1,191 @@
+/* git github */
+1033256773@qq.com
+liming123456
+
+一.建立下载库
+	1.进入本项目git下；cd 文件路径;                                                                                                     (git status)
+	2.克隆项目：git clone   url复制;
+	3.设置贡献者 ： a、进入本项目git下；cd;   
+					b、git config --global user.name "naobaixingliming"    git config --global user.email "1033256773@qq.com"  (git config --list) 
+			
+二.工作区--暂存区---版本区---操作
+	1.添加到暂区域
+		暂存区 git add [文件名]   或 git add .  :添加全部到暂存区
+	2.添加到版本区
+		git commit  不写注释的操作 git commit -m "注释说明"
+		直接添加到暂存区、版本区的方式： git commit -a -m "注释说明"                                                            (git log)
+		email
+				
+		
+Git命令
+	对比：
+		git dif : 工作区与暂存区的对比
+		git diff --cached : 暂存区与版本库的对比
+		git diff master : 工作区与版本库的对比
+	撤销：git
+		git reset HEAD [文件名]: 暂存区还原到工作区
+		git checkout --[文件名]
+		git commit [文件名] --amend
+	删除：
+		git rm [文件名] ：删除暂存区的文件（工作的文件已删除）
+		git rm -f [文件名] ：删除暂存文件，包括工作区的
+		git rm --cached [文件名] ：删除暂存区文件，不包括工作区的
+	恢复
+		git checkout [commit id]							  //恢复到一个文件状态
+		git reset --hard [commit id] HEAD  ||   HEAD ~ [数字] //恢复到一个版本状态
+		git reflog 
+		
+
+
+		
+同步到远程仓库
+	git remote  -v ：查看远程仓库名
+	git remote -add 
+	git push origin master ：推送到远程仓库
+	
+	多人协作解决冲突
+		git fetch ：拉取不合并
+			> git diff master origin/master
+			> git merge origin/master
+		
+		git pull : 拉取并合并
+	
+	
+开源项目协作
+	fork
+	pull request
+	
+
+git分支
+	git branch 				 查看分支	
+	git branch  [分支名]     创建分支	
+	git branch --merged      查看主分支下合并的分支
+	git branch --no--merged  查看主分支下没有合并的分支
+	git branch -d [分支名]   删除分支
+	git checkout [分支名]    切换分支	
+	git checkout -b [分支名] 创建并切换分支		
+	git merge [分支名] 合并分支
+	
+	
+/*
+ *git 2.3.2
+ *
+*/	
+	
+	
+创建版本库
+	
+	
+	1、配置 用户名 邮箱
+	git config --global user.name "naobaixingliming"    
+	git config --global user.email "1033256773@qq.com"  (git config --list) 
+	
+	2、cd 进入git项目路径
+	cd E:\gitSpace
+	pwd
+	/e/gitSpace
+	
+	3、通过git init命令把这个目录变成Git可以管理的仓库 
+	
+	
+	
+	4、git add readme.txt   ---->  git commit -m "文件说明文档"
+	   git status : 仓库当前的状态;
+	   git diff readme.txt :查看difference 
+	   
+	   HEAD ：表示当前版本
+	   git log 
+	   git log --pretty=oneline
+	
+	5、回退版本
+		git reset --hard  19d70a778e56f（log id）
+
+		cat readme.txt : 查看
+		
+		想恢复到新版本,找不到新版本的commit id
+		
+		git reset --hard HEAD^ : 回退到最初版本
+		git reflog ：用来记录每一次命令（查看命令历史，以便确定要回到未来的哪个版本）
+	
+	6、工作区和暂存区
+		git add ：命令实际上就是把要提交的所有修改放到暂存区（Stage），然后，
+		git commit ：就可以一次性把暂存区的所有修改提交到分支。
+	
+	7、管理修改
+		git checkout -- readme.txt : 文件在工作区的修改全部撤销
+		rm test.txt ： 文件管理器中把没用的文件删了
+		git rm test.txt ：
+		
+	8、添加远程库
+		 git remote add origin https://github.com/naobaixingliming/testGit.git
+		 git push -u origin master
+	
+	9、从远程库克隆
+		a、从零开发，那么最好的方式是先创建远程库，然后，从远程库克隆。
+		b、git clone ：克隆一个本地库
+		
+		git clone git@github.com:michaelliao/gitskills.git
+		cd 路径
+		ls
+		
+	10、分支管理	
+		a、创建与合并分支 :  分支叫主分支，即master分支;
+		
+		建dev分支，然后切换到dev分支：
+			$ git checkout -b dev
+			
+		git checkout命令加上-b参数表示创建并切换，相当于以下两条命令：
+			$ git branch dev
+			$ git checkout dev
+		
+		git branch命令查看当前分支
+		
+		dev分支的工作完成，我们就可以切换回master分支:
+			$ git checkout master
+			
+		把dev分支的工作成果合并到master分支上：
+			$ git merge dev
+			
+		合并完成后，删除dev分支：
+			$ git branch -d dev
+	
+	11、解决冲突
+		准备新的feature1分支，继续我们的新分支开发：
+			$ git checkout -b feature1
+			
+		带参数的git log也可以看到分支的合并情况：	
+			git log --graph --pretty=oneline --abbrev-commit
+		
+		git pull origin master : 相当于是从远程获取最新版本并merge到本地
+		git fetch origin master : 相当于是从远程获取最新版本到本地，不会自动merge
+		
+	11、分支管理策略		
+		git merge --no-ff -m "merge with no-ff" dev	:--no-ff参数，表示禁用Fast forward：
+		小伙伴们每个人都在dev分支上干活，每个人都有自己的分支，时不时地往dev分支上合并就可以	
+			
+	12、Bug分支
+		创建一个分支issue-101来修复它
+		git stash：当前工作现场“储藏”起来，等以后恢复现场后继续工作
+		git stash apply恢复，但是恢复后，stash内容并不删除，
+		你需要用git stash drop来删除；	
+		git stash pop，恢复的同时把stash内容也删了
+			
+		git branch -D <name>强行删除	
+	
+	13、多人协作
+		git remote：查看远程库的信息
+		git push origin master：推送分支	
+		git push origin dev：要推送其他分支，比如dev	
+			
+	14、创建标签
+		切换到需要打标签的分支上
+		git tag <name> :git tag v1.0
+		git tag : 查看所有标签
+		
+		忘了打标签 ---> 找到历史提交的commit id --->git tag v0.9 6224937
+		
+		git show <tagname> 查看标签信息：git show v0.9
+			
+			
+			
+		

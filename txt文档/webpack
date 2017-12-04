@@ -1,0 +1,63 @@
+/*
+*admin: 明玉帛
+*time :2017-11-14 18:24
+*/
+
+src:项目源代码
+
+es6--->不能识别--->webpack--->
+
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "webpack --config webpack.config.dev.js",
+    "start":"webpack-dev-server --config webpack.config.dev.js"
+  },
+
+webapck配置文件：(webpack.config.js){
+	entry:'./src/app.js',			//入口文件
+	output:{
+		path:path.resolve(__dirname,'dist'),	//打包后的输出路径--绝对路径 (require引入)
+		filename:'main.js' 				//打包后的输出的文件名
+	},
+	plugins:[//定义插件
+		new HtmlWebpackPlugins({(require引入)
+			filename:'main.html',		//自动生成的输出的文件名
+			template:'src/index.html',				//参照的模板文件
+		})
+	],
+	module:[{
+		rules:[{
+			test:/\.js$/,				
+			use:[{          //当匹配到js后，//依赖 babel-loader babel-core
+                loader:'bable-loader',
+                options:{
+                    presets:['react']       //babel-preset-react
+                }
+            }] 
+		}]
+	}]
+	
+}
+	
+
+npm init -y 		:新建 (默认) package.json	
+npm i -D webapck 	:安装开发依赖 (若不行，手动注入)-->"devDependencies":{"webpack"："^3.5.5"}
+					"dev"："webpack"  --->运行dev,(webapck) : 默认运行webpack.config.js文件
+npm run dev 		:打包运行
+npm run start 		:服务器运行					
+			
+npm i -D html-webpack-plugin    :自动生成html文件插件（html-webpack-plugin）
+
+npm i				:安装package.json下的插件
+
+npm i -S react react-dom  (=== npm install --save-dev css-loader)
+
+npm i -D babel-loader babel-core
+npm i -D babel-preset-react
+
+npm i -D webpack-dev-server   //（运行服务器(调试)）
+
+ 
+npm i -D css-loader    npm i -D style-loader
+npm i -D file-loader
+npm i -D url-loader  //将图片编译成base64,减少请求(小的图片)

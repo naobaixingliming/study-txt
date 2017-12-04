@@ -1,0 +1,7 @@
+打开开发者工具			    F12 ， Ctrl + Shift + I
+打开设备模式 			    Ctrl + Shift + M
+
+刷新页面并清除缓存			Ctrl + F5, Ctrl + Shift + R
+
+查看历史页					Ctrl + H
+查看下载页面				Ctrl + J
